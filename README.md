@@ -1,6 +1,7 @@
-# VINS-Fusion branch for OpenCV 4.2
+# VINS-Fusion branch for OpenCV 4.x
 ## Modifications:
-1. all CMakeFiles.txt: set(CMAKE_CXX_FLAGS "-std=c++14")
+0. Add configuration for stereo-inertial odometry on KITTI raw-unsynced dataset, following [KITTI-interp](https://github.com/gauxonz/KITTI-interp/) and [kitti_to_rosbag_for_vio](https://github.com/PetWorm/kitti_to_rosbag_for_vio)
+1. all CMakeFiles.txt: set(CMAKE_CXX_FLAGS "-std=c++17")
 2. camera_model/src/chessboard/Chessboard.cc
    - #include <opencv2/imgproc/types_c.h>
    - CV_AA = cv::LINE_AA, CV_GRAY2BGR = cv::COLOR_GRAY2BGR, CV_RGB2GRAY = cv::COLOR_RGB2GRAY
@@ -16,6 +17,8 @@
    
 9. .yaml in config folder
    - modify output_path & pose_graph_save_path ("./output" & "./output/pose_graph")
+
+10. create OUTPUT_FOLDER if not exists
 
 ## An optimization-based multi-sensor state estimator
 

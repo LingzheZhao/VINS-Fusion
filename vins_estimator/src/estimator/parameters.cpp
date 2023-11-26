@@ -6,8 +6,10 @@
  * Licensed under the GNU General Public License v3.0;
  * you may not use this file except in compliance with the License.
  *******************************************************/
-
+#include <filesystem>
 #include "parameters.h"
+
+namespace fs = std::filesystem;
 
 double INIT_DEPTH;
 double MIN_PARALLAX;
@@ -108,6 +110,7 @@ void readParameters(std::string config_file)
     MIN_PARALLAX = MIN_PARALLAX / FOCAL_LENGTH;
 
     fsSettings["output_path"] >> OUTPUT_FOLDER;
+    fs::create_directories(OUTPUT_FOLDER);
     VINS_RESULT_PATH = OUTPUT_FOLDER + "/vio.csv";
     std::cout << "result path " << VINS_RESULT_PATH << std::endl;
     std::ofstream fout(VINS_RESULT_PATH, std::ios::out);
