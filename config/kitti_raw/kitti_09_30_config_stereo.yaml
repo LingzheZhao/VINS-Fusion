@@ -7,12 +7,12 @@ num_of_cam: 2
 imu_topic: ""
 image0_topic: "/cam00/image_raw"
 image1_topic: "/cam01/image_raw"
-output_path: "/home/lzzhao/catkin_output/VINS-Fusion_Stereo/09"
+output_path: "/home/lzzhao/catkin_output/VINS-Fusion_Stereo_temp/09"
 
-cam0_calib: "cam_09_30_raw.yaml"
-cam1_calib: "cam1_09_30_raw.yaml"
-image_width: 1392
-image_height: 512
+cam0_calib: "cam_09_30.yaml"
+cam1_calib: "cam_09_30.yaml"
+image_width: 1226
+image_height: 370
 
 # Extrinsic parameter between IMU and Camera.
 estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
@@ -33,9 +33,9 @@ body_T_cam1: !!opencv-matrix
    cols: 4
    dt: d
    # T_cam1_to_imu
-   data: [-0.0226400778, -0.0131236383,  0.9996575117,  1.1021600067,
-        -0.9997348439,  0.0044946607, -0.0225828505, -0.8562258198,
-        -0.0041967248, -0.9999037521, -0.0132218903,  0.7492446519,
+   data: [ 0.0087511861, -0.0047961109,  0.9999501783,  1.10694381,
+        -0.9998642288, -0.0140024663,  0.0086832454, -0.8561497,
+         0.0139601509, -0.9998904301, -0.0049179702,  0.75356458,
          0.0000000000,  0.0000000000,  0.0000000000,  1.0000000000]
 
 

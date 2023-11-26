@@ -2,15 +2,17 @@
 
 #common parameters
 imu: 1
-num_of_cam: 1
+num_of_cam: 2
 
 imu_topic: "/imu_data"
 image0_topic: "/cam00/image_raw"
-output_path: "/home/lzzhao/catkin_output/VINS-Fusion_MonoInertial_td/09"
+image1_topic: "/cam01/image_raw"
+output_path: "/home/lzzhao/catkin_output/VINS-Fusion_StereoInertial/00"
 
-cam0_calib: "cam_09_30.yaml"
-image_width: 1226
-image_height: 370
+cam0_calib: "cam_10_03.yaml"
+cam1_calib: "cam_10_03.yaml"
+image_width: 1241
+image_height: 376
 
 # Extrinsic parameter between IMU and Camera.
 estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
@@ -19,12 +21,21 @@ estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trus
 body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
-   dt: d
-   
+   dt: d 
    # T_cam_to_imu
    data: [ 0.0087511861, -0.0047961109,  0.9999501783,  1.1022430484,
         -0.9998642288, -0.0140024663,  0.0086832454, -0.3190719593,
          0.0139601509, -0.9998904301, -0.0049179702,  0.7460659045,
+         0.0000000000,  0.0000000000,  0.0000000000,  1.0000000000]
+
+body_T_cam1: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   # T_cam1_to_imu
+   data: [ 0.0087511861, -0.0047961109,  0.9999501783,  1.10694381,
+        -0.9998642288, -0.0140024663,  0.0086832454, -0.8561497,
+         0.0139601509, -0.9998904301, -0.0049179702,  0.75356458,
          0.0000000000,  0.0000000000,  0.0000000000,  1.0000000000]
 
 #Multiple thread support
@@ -52,6 +63,6 @@ gyr_w: 0.003491       # gyroscope bias random work noise standard deviation.    
 g_norm: 9.80987     # gravity magnitude
 
 #unsynchronization parameters
-estimate_td: 1                      # online estimate time offset between camera and imu
+estimate_td: 0                      # online estimate time offset between camera and imu
 td: 0.0                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
